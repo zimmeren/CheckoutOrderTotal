@@ -5,35 +5,36 @@ import java.util.HashMap;
 import java.util.NoSuchElementException;
 
 public class Catalog {
-    private Map<String, Float> items;
+    private Map<String, Item> items;
 
     public Catalog() {
         items = new HashMap<>();
     }
 
-    public void addItem(String item, float price) {
-        items.put(item, price);
+    public void addItem(String name, float price) {
+        Item item = Item.of(name, price);
+        items.put(name, item);
     }
 
-    public float getItemPrice(String item) throws NoSuchElementException {
-        if (items.containsKey(item)) {
-            return items.get(item);
+    public float getItemPrice(String name) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            return items.get(name).price;
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
     }
 
-    public void removeItem(String item) throws NoSuchElementException {
-        if (items.containsKey(item)) {
-            items.remove(item);
+    public void removeItem(String name) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            items.remove(name);
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
     }
 
-    public void updateItem(String item, float price) throws NoSuchElementException {
-        if (items.containsKey(item)) {
-            items.replace(item, price);
+    public void updateItem(String name, float price) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            items.get(name).price = price;
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
