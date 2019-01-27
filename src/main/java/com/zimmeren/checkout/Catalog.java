@@ -23,7 +23,7 @@ public class Catalog {
         }
     }
 
-    public void removeItem(String item) {
+    public void removeItem(String item) throws NoSuchElementException {
         if (items.containsKey(item)) {
             items.remove(item);
         } else {
