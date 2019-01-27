@@ -25,6 +25,10 @@ public class Item {
     }
 
     public float calculatePriceOf(float quantity) {
-        return (price - markdown) * quantity;
+        if (special.isPresent()) {
+            return special.get().priceOf(quantity, price);
+        } else {
+            return (price - markdown) * quantity;
+        }
     }
 }
