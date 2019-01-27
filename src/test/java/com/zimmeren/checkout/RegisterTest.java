@@ -31,7 +31,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingPurchaseToRegisterTotalDecreases() {
+    public void whenRemovingPurchaseFromRegisterTotalDecreases() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -39,6 +39,12 @@ public class RegisterTest {
         register.purchase(item);
         register.remove(item);
         assertEquals(0.0f, register.getTotal(), 0);
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void whenRemovingPurchaseFromRegisterThatDoesNotExistAnExceptionIsThrown() {
+        Register register = new Register();
+        register.remove("fake item");
     }
 
 }
