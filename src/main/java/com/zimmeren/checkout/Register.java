@@ -39,13 +39,21 @@ public class Register {
         total += catalog.getItemsPrice(item, purchasedAmount.get(item));
     }
 
-    public void remove(String item) throws NoSuchElementException {
+    public void removeEaches(String item) throws NoSuchElementException {
+        remove(item, 1f);
+    }
+
+    public void removeWeighted(String item, float weight) throws NoSuchElementException {
+        remove(item, weight);
+    }
+
+    private void remove(String item, float quantity) throws NoSuchElementException {
         if (!purchasedAmount.containsKey(item)) {
             throw new NoSuchElementException("item does not exist in the purchased items so it cannot be removed");
         }
         total -= catalog.getItemsPrice(item, purchasedAmount.get(item));
-        if (purchasedAmount.get(item) > 1) {
-            purchasedAmount.replace(item, purchasedAmount.get(item) - 1f);
+        if (purchasedAmount.get(item) - quantity > 0f) {
+            purchasedAmount.replace(item, purchasedAmount.get(item) - quantity);
             total += catalog.getItemsPrice(item, purchasedAmount.get(item));
         } else {
             purchasedAmount.remove(item);

@@ -37,14 +37,14 @@ public class RegisterTest {
         float price = 3.50f;
         register.catalog.addItem(item, price);
         register.purchaseEaches(item);
-        register.remove(item);
+        register.removeEaches(item);
         assertEquals(0.0f, register.getTotal(), 0);
     }
 
     @Test (expected = NoSuchElementException.class)
     public void whenRemovingPurchaseFromRegisterThatDoesNotExistAnExceptionIsThrown() {
         Register register = new Register();
-        register.remove("fake item");
+        register.removeEaches("fake item");
     }
 
     @Test
@@ -84,8 +84,8 @@ public class RegisterTest {
         register.purchaseEaches(item);
         register.purchaseEaches(item);
         register.purchaseEaches(item);
-        register.remove(item);
-        register.remove(item);
+        register.removeEaches(item);
+        register.removeEaches(item);
         assertEquals(price * 3, register.getTotal(), 0);
     }
 
@@ -98,6 +98,31 @@ public class RegisterTest {
         float weight = 0.47f;
         register.purchaseWeighted(item, weight);
         assertEquals(price * weight, register.getTotal(), 0);
+    }
+
+    @Test
+    public void whenRemovingWeightedItemOnRegisterTheTotalPriceReturnsToZero() {
+        Register register = new Register();
+        String item = "chicken fingers";
+        float price = 2.98f;
+        register.catalog.addItem(item, price);
+        float weight = 0.47f;
+        register.purchaseWeighted(item, weight);
+        register.removeWeighted(item, weight);
+        assertEquals(0f, register.getTotal(), 0);
+    }
+
+    @Test
+    public void whenRemovingPartialWeightedItemOnRegisterTheTotalPriceReturnsThePartialAmountLeft() {
+        Register register = new Register();
+        String item = "chicken fingers";
+        float price = 2.98f;
+        register.catalog.addItem(item, price);
+        float weight = 0.47f;
+        register.purchaseWeighted(item, weight);
+        float removeWeight = 0.12f;
+        register.removeWeighted(item, removeWeight);
+        assertEquals(price * weight - price *removeWeight, register.getTotal(), 0);
     }
 
 }
