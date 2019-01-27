@@ -85,4 +85,14 @@ public class CatalogTest {
         catalog.getItemsPrice("fake item", 5);
     }
 
+    @Test
+    public void whenSettingNewSpecialForCatalogItemThePriceReflectsSpecial() {
+        Catalog catalog = new Catalog();
+        String item = "fish sticks";
+        float price = 2.49f;
+        catalog.addItem(item, price);
+        catalog.setItemSpecial(item, 1f, 1f, 1f);
+        assertEquals(price, catalog.getItemsPrice(item, 2), 0);
+    }
+
 }

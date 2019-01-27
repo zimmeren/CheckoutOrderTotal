@@ -3,6 +3,7 @@ package com.zimmeren.checkout;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 public class Catalog {
     private Map<String, Item> items;
@@ -51,6 +52,15 @@ public class Catalog {
     public void setItemMarkdown(String name, float markdown) throws NoSuchElementException {
         if (items.containsKey(name)) {
             items.get(name).markdown = markdown;
+        } else {
+            throw new NoSuchElementException("item does not exist in the items");
+        }
+    }
+
+    public void setItemSpecial(String name, float buy, float get, float off) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            Special special = Special.of(buy, get, off);
+            items.get(name).special = Optional.of(special);
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
