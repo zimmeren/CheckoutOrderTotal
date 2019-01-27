@@ -18,17 +18,21 @@ public class Special {
 
     public float priceOf(float quantity, float stickerPrice) {
         float price = 0f;
-        if (quantity - buy > 0) {
-            price += buy * stickerPrice;
-            quantity -= buy;
-        } else {
-            price += quantity * stickerPrice;
-            return price;
-        }
-        if (quantity - get > 0) {
-            price += get * (stickerPrice - (off * stickerPrice));
-        } else {
-            price += quantity * (stickerPrice - (off * stickerPrice));
+        while (quantity > 0) {
+            if (quantity - buy > 0) {
+                price += buy * stickerPrice;
+                quantity -= buy;
+            } else {
+                price += quantity * stickerPrice;
+                break;
+            }
+            if (quantity - get > 0) {
+                price += get * (stickerPrice - (off * stickerPrice));
+                quantity -= get;
+            } else {
+                price += quantity * (stickerPrice - (off * stickerPrice));
+                break;
+            }
         }
         float priceRoundedUpToNextCent = (float)Math.ceil(price * 100f) / 100f;
         return priceRoundedUpToNextCent;
