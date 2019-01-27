@@ -2,6 +2,8 @@ package com.zimmeren.checkout;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 public class RegisterTest {
@@ -20,6 +22,12 @@ public class RegisterTest {
         register.catalog.addItem(item, price);
         register.purchase(item);
         assertEquals(price, register.getTotal(), 0);
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void whenAddingPurchaseToRegisterThatDoesNotExistAnExceptionIsThrown() {
+        Register register = new Register();
+        register.purchase("fake item");
     }
 
 }
