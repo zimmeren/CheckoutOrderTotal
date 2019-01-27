@@ -42,14 +42,14 @@ public class CatalogTest {
         catalog.addItem(item, price);
         assertEquals(price, catalog.getItemPrice(item), 0);
         float updatedPrice = 3.00f;
-        catalog.updateItem(item, updatedPrice);
+        catalog.setItemPrice(item, updatedPrice);
         assertEquals(updatedPrice, catalog.getItemPrice(item), 0);
     }
 
     @Test (expected = NoSuchElementException.class)
     public void whenUpdatingNonExistentObjectFromCatalogExceptionIsThrown() {
         Catalog catalog = new Catalog();
-        catalog.updateItem("fake item", 0.0f);
+        catalog.setItemPrice("fake item", 0.0f);
     }
 
     @Test

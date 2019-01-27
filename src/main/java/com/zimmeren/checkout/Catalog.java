@@ -32,7 +32,7 @@ public class Catalog {
         }
     }
 
-    public void updateItem(String name, float price) throws NoSuchElementException {
+    public void setItemPrice(String name, float price) throws NoSuchElementException {
         if (items.containsKey(name)) {
             items.get(name).price = price;
         } else {
