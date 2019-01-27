@@ -46,4 +46,10 @@ public class CatalogTest {
         assertEquals(updatedPrice, catalog.getItemPrice(item), 0);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenUpdatingNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.updateItem("fake item", 0.0f);
+    }
+
 }
