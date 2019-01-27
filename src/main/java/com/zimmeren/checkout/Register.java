@@ -25,11 +25,11 @@ public class Register {
         purchase(item, 1f);
     }
 
-    public void purchaseWeighted(String item, float weight) {
+    public void purchaseWeighted(String item, float weight) throws NoSuchElementException {
         purchase(item, weight);
     }
 
-    private void purchase(String item, float quantity) {
+    private void purchase(String item, float quantity) throws NoSuchElementException {
         if (purchasedAmount.containsKey(item)) {
             total -= catalog.getItemsPrice(item, purchasedAmount.get(item));
             purchasedAmount.replace(item, purchasedAmount.get(item) + quantity);
