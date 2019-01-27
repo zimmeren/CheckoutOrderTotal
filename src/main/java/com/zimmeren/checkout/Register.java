@@ -1,5 +1,7 @@
 package com.zimmeren.checkout;
 
+import java.util.NoSuchElementException;
+
 public class Register {
 
     private float total;
@@ -13,5 +15,9 @@ public class Register {
 
     public float getTotal() {
         return total;
+    }
+
+    public void purchase(String item) throws NoSuchElementException {
+        total += catalog.getItemPrice(item);
     }
 }

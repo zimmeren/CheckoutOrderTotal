@@ -12,4 +12,14 @@ public class RegisterTest {
         assertEquals(0.0f, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenAddingPurchaseToRegisterTotalIncreases() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        register.catalog.addItem(item, price);
+        register.purchase(item);
+        assertEquals(price, register.getTotal(), 0);
+    }
+
 }
