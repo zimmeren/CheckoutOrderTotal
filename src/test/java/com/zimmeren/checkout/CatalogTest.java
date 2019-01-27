@@ -52,4 +52,15 @@ public class CatalogTest {
         catalog.updateItem("fake item", 0.0f);
     }
 
+    @Test
+    public void whenSettingItemMarkdownInCatalogItsPriceIsUpdated() {
+        Catalog catalog = new Catalog();
+        String item = "cookies";
+        float price = 3.50f;
+        catalog.addItem(item, price);
+        float markdown = 0.75f;
+        catalog.setItemMarkdown(item, markdown);
+        assertEquals(price - markdown, catalog.getItemPrice(item), 0);
+    }
+
 }

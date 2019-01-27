@@ -18,7 +18,7 @@ public class Catalog {
 
     public float getItemPrice(String name) throws NoSuchElementException {
         if (items.containsKey(name)) {
-            return items.get(name).price;
+            return items.get(name).calculatePrice();
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
@@ -35,6 +35,14 @@ public class Catalog {
     public void updateItem(String name, float price) throws NoSuchElementException {
         if (items.containsKey(name)) {
             items.get(name).price = price;
+        } else {
+            throw new NoSuchElementException("item does not exist in the items");
+        }
+    }
+
+    public void setItemMarkdown(String name, float markdown) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            items.get(name).markdown = markdown;
         } else {
             throw new NoSuchElementException("item does not exist in the items");
         }
