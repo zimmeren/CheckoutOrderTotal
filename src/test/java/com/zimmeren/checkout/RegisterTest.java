@@ -59,4 +59,18 @@ public class RegisterTest {
         assertEquals(price - markdown, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenPurchasingMultipleOfAnItemOnRegisterTheTotalPriceIsForThatQuantity() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        register.catalog.addItem(item, price);
+        register.purchase(item);
+        register.purchase(item);
+        register.purchase(item);
+        register.purchase(item);
+        register.purchase(item);
+        assertEquals(price * 5, register.getTotal(), 0);
+    }
+
 }
