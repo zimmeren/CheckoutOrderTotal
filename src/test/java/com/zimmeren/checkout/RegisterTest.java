@@ -47,4 +47,16 @@ public class RegisterTest {
         register.remove("fake item");
     }
 
+    @Test
+    public void whenPurchasingMarkedDownItemOnRegisterTheMarkedDownPriceIsReflected() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        float markdown = 0.75f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemMarkdown(item, 0.75f);
+        register.purchase(item);
+        assertEquals(price - markdown, register.getTotal(), 0);
+    }
+
 }
