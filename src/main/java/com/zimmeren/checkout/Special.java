@@ -15,4 +15,8 @@ public class Special {
     public static Special of(float buy, float get, float off) {
         return new Special(buy, get, off);
     }
+
+    public float priceOf(float quantity, float stickerPrice) {
+        return quantity * stickerPrice;
+    }
 }
