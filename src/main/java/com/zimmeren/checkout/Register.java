@@ -33,4 +33,12 @@ public class Register {
     public void removeItemFromCatalog(String item) {
         catalog.remove(item);
     }
+
+    public void updateItemInCatalog(String item, float price) throws NoSuchElementException {
+        if (catalog.containsKey(item)) {
+            catalog.replace(item, price);
+        } else {
+            throw new NoSuchElementException("item does not exist in the catalog");
+        }
+    }
 }

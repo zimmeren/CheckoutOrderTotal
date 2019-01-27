@@ -33,4 +33,16 @@ public class RegisterTest {
         register.removeItemFromCatalog(item);
         register.getItemPriceFromCatalog(item);
     }
+
+    @Test
+    public void whenUpdatingItemInCatalogItsPriceIsUpdated() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        register.addItemToCatalog(item, price);
+        assertEquals(price, register.getItemPriceFromCatalog(item), 0);
+        float updatedPrice = 3.00f;
+        register.updateItemInCatalog(item, updatedPrice);
+        assertEquals(updatedPrice, register.getItemPriceFromCatalog(item), 0);
+    }
 }
