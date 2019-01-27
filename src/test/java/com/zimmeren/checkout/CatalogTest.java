@@ -28,6 +28,12 @@ public class CatalogTest {
         catalog.getItemPrice(item);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenRemovingNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.removeItem("fake item");
+    }
+
     @Test
     public void whenUpdatingItemInCatalogItsPriceIsUpdated() {
         Catalog catalog = new Catalog();

@@ -24,7 +24,11 @@ public class Catalog {
     }
 
     public void removeItem(String item) {
-        items.remove(item);
+        if (items.containsKey(item)) {
+            items.remove(item);
+        } else {
+            throw new NoSuchElementException("item does not exist in the items");
+        }
     }
 
     public void updateItem(String item, float price) throws NoSuchElementException {
