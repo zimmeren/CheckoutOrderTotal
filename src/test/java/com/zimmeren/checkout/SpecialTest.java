@@ -50,4 +50,16 @@ public class SpecialTest {
         assertEquals(8.97f, special.priceOf(quantity, price), 0);
     }
 
+    @Test
+    public void whenCalculatingPriceOfSpecialThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
+        float buy = 3f;
+        float get = 1f;
+        float off = 0.88f;
+        Special special = Special.of(buy, get, off);
+        float quantity = 4f;
+        float price = 2.99f;
+        assertEquals(9.33f, special.priceOf(quantity, price), 0);
+    }
+
+
 }

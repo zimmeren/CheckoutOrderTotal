@@ -30,6 +30,7 @@ public class Special {
         } else {
             price += quantity * (stickerPrice - (off * stickerPrice));
         }
-        return price;
+        float priceRoundedUpToNextCent = (float)Math.ceil(price * 100f) / 100f;
+        return priceRoundedUpToNextCent;
     }
 }
