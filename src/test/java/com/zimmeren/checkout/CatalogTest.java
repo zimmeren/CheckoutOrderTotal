@@ -106,4 +106,15 @@ public class CatalogTest {
         assertEquals(3.74f, catalog.getItemsPrice(item, 2), 0);
     }
 
+    @Test
+    public void whenRemovingASpecialFromCatalogItemThePriceReflectsRegularPrice() {
+        Catalog catalog = new Catalog();
+        String item = "fish sticks";
+        float price = 2.49f;
+        catalog.addItem(item, price);
+        catalog.setItemSpecial(item, 1f, 1f, 1f);
+        catalog.removeItemSpecial(item);
+        assertEquals(4.98f, catalog.getItemsPrice(item, 2), 0);
+    }
+
 }

@@ -65,4 +65,12 @@ public class Catalog {
             throw new NoSuchElementException("item does not exist in the items");
         }
     }
+
+    public void removeItemSpecial(String name) {
+        if (items.containsKey(name)) {
+            items.get(name).special = Optional.empty();
+        } else {
+            throw new NoSuchElementException("item does not exist in the items");
+        }
+    }
 }
