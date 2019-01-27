@@ -138,4 +138,19 @@ public class RegisterTest {
         assertEquals(0f, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenAddingSpecialToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+        Register register = new Register();
+        String item = "doritos";
+        float price = 1.67f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecial(item, 1f, 1f, 1f);
+        register.purchaseEaches(item);
+        assertEquals(price, register.getTotal(), 0);
+        register.purchaseEaches(item);
+        assertEquals(price, register.getTotal(), 0);
+        register.purchaseEaches(item);
+        assertEquals(2*price, register.getTotal(), 0);
+    }
+
 }
