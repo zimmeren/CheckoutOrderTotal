@@ -34,7 +34,6 @@ public class Special {
                 break;
             }
         }
-        float priceRoundedUpToNextCent = (float)Math.ceil(price * 100f) / 100f;
-        return priceRoundedUpToNextCent;
+        return Utility.roundUpToCent(price);
     }
 }
