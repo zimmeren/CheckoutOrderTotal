@@ -95,4 +95,15 @@ public class CatalogTest {
         assertEquals(price, catalog.getItemsPrice(item, 2), 0);
     }
 
+    @Test
+    public void whenUpdatingASpecialFromCatalogItemThePriceReflectsNewSpecial() {
+        Catalog catalog = new Catalog();
+        String item = "fish sticks";
+        float price = 2.49f;
+        catalog.addItem(item, price);
+        catalog.setItemSpecial(item, 1f, 1f, 1f);
+        catalog.setItemSpecial(item, 1f, 1f, 0.5f);
+        assertEquals(3.74f, catalog.getItemsPrice(item, 2), 0);
+    }
+
 }
