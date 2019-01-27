@@ -97,7 +97,7 @@ public class RegisterTest {
         register.catalog.addItem(item, price);
         float weight = 0.47f;
         register.purchaseWeighted(item, weight);
-        assertEquals(price * weight, register.getTotal(), 0);
+        assertEquals(1.41f, register.getTotal(), 0);
     }
 
     @Test
@@ -122,7 +122,7 @@ public class RegisterTest {
         register.purchaseWeighted(item, weight);
         float removeWeight = 0.12f;
         register.removeWeighted(item, removeWeight);
-        assertEquals(price * weight - price *removeWeight, register.getTotal(), 0);
+        assertEquals(1.05f, register.getTotal(), 0);
     }
 
     @Test

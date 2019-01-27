@@ -28,7 +28,9 @@ public class Item {
         if (special.isPresent()) {
             return special.get().priceOf(quantity, price);
         } else {
-            return (price - markdown) * quantity;
+            float priceWithMarkdown = (price - markdown) * quantity;
+            float priceRoundedUpToNextCent = (float)Math.ceil(priceWithMarkdown * 100f) / 100f;
+            return priceRoundedUpToNextCent;
         }
     }
 }

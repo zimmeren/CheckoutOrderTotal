@@ -51,7 +51,7 @@ public class ItemTest {
         float price = 2.49f;
         Item fishSticks = Item.of(name, price);
         float quantity = 0.79f;
-        assertEquals(price * quantity, fishSticks.calculatePriceOf(quantity), 0);
+        assertEquals(1.97f, fishSticks.calculatePriceOf(quantity), 0);
     }
 
     @Test
