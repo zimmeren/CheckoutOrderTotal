@@ -2,6 +2,8 @@ package com.zimmeren.checkout;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 public class ItemTest {
@@ -51,4 +53,11 @@ public class ItemTest {
         assertEquals(price * quantity, fishSticks.calculatePriceOf(quantity), 0);
     }
 
+    @Test
+    public void whenTryingToAccessAnOptionalSpecialThatDoesNotExistPresentReturnsFalse() {
+        String name = "Fish Sticks";
+        float price = 2.49f;
+        Item fishSticks = Item.of(name, price);
+        assertFalse(fishSticks.special.isPresent());
+    }
 }
