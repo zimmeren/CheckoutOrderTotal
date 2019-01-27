@@ -125,4 +125,17 @@ public class RegisterTest {
         assertEquals(price * weight - price *removeWeight, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenRemovingMoreWeightedItemThanPurchasedOnRegisterItWillProtectAndReturnZero() {
+        Register register = new Register();
+        String item = "chicken fingers";
+        float price = 2.98f;
+        register.catalog.addItem(item, price);
+        float weight = 0.47f;
+        register.purchaseWeighted(item, weight);
+        float removeWeight = 0.72f;
+        register.removeWeighted(item, removeWeight);
+        assertEquals(0f, register.getTotal(), 0);
+    }
+
 }
