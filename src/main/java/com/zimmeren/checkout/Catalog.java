@@ -24,6 +24,14 @@ public class Catalog {
         }
     }
 
+    public float getItemsPrice(String name, float quantity) throws NoSuchElementException {
+        if (items.containsKey(name)) {
+            return items.get(name).calculatePriceOf(quantity);
+        } else {
+            throw new NoSuchElementException("item does not exist in the items");
+        }
+    }
+
     public void removeItem(String name) throws NoSuchElementException {
         if (items.containsKey(name)) {
             items.remove(name);

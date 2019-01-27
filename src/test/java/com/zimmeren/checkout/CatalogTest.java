@@ -69,4 +69,14 @@ public class CatalogTest {
         catalog.setItemMarkdown("fake item", 0.5f);
     }
 
+    @Test
+    public void whenGettingPriceOfMultipleOfAnItemTheCatalogReturnsTheMultipliedCost() {
+        Catalog catalog = new Catalog();
+        String item = "cookies";
+        float price = 3.50f;
+        catalog.addItem(item, price);
+        float quantity = 5;
+        assertEquals(price * quantity, catalog.getItemsPrice(item, quantity), 0);
+    }
+
 }
