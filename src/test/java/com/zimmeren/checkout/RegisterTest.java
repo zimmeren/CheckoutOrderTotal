@@ -30,4 +30,15 @@ public class RegisterTest {
         register.purchase("fake item");
     }
 
+    @Test
+    public void whenRemovingPurchaseToRegisterTotalDecreases() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        register.catalog.addItem(item, price);
+        register.purchase(item);
+        register.remove(item);
+        assertEquals(0.0f, register.getTotal(), 0);
+    }
+
 }

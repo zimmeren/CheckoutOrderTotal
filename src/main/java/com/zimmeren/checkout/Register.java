@@ -20,4 +20,8 @@ public class Register {
     public void purchase(String item) throws NoSuchElementException {
         total += catalog.getItemPrice(item);
     }
+
+    public void remove(String item) throws NoSuchElementException {
+        total -= catalog.getItemPrice(item);
+    }
 }
