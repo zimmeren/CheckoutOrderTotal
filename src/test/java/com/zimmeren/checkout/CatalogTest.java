@@ -79,4 +79,10 @@ public class CatalogTest {
         assertEquals(price * quantity, catalog.getItemsPrice(item, quantity), 0);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenGettingPriceOfMultipleOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.getItemsPrice("fake item", 5);
+    }
+
 }
