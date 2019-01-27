@@ -17,6 +17,10 @@ public class Item {
     }
 
     public float calculatePrice() {
-        return price - markdown;
+        return calculatePriceOf(1);
+    }
+
+    public float calculatePriceOf(float quantity) {
+        return (price - markdown) * quantity;
     }
 }

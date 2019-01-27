@@ -34,4 +34,13 @@ public class ItemTest {
 
     }
 
+    @Test
+    public void whenMultipleQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
+        String name = "Cookies";
+        float price = 3.50f;
+        Item cookies = Item.of(name, price);
+        float quantity = 5f;
+        assertEquals(price * quantity, cookies.calculatePriceOf(quantity), 0);
+    }
+
 }
