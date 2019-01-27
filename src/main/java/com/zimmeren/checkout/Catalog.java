@@ -18,59 +18,44 @@ public class Catalog {
     }
 
     public float getItemPrice(String name) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            return items.get(name).calculatePrice();
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        return items.get(name).calculatePrice();
     }
 
     public float getItemsPrice(String name, float quantity) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            return items.get(name).calculatePriceOf(quantity);
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        return items.get(name).calculatePriceOf(quantity);
     }
 
     public void removeItem(String name) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            items.remove(name);
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        items.remove(name);
     }
 
     public void setItemPrice(String name, float price) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            items.get(name).price = price;
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        items.get(name).price = price;
     }
 
     public void setItemMarkdown(String name, float markdown) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            items.get(name).markdown = markdown;
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        items.get(name).markdown = markdown;
     }
 
     public void setItemSpecial(String name, float buy, float get, float off) throws NoSuchElementException {
-        if (items.containsKey(name)) {
-            Special special = Special.of(buy, get, off);
-            items.get(name).special = Optional.of(special);
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
-        }
+        checkItemExists(name);
+        Special special = Special.of(buy, get, off);
+        items.get(name).special = Optional.of(special);
     }
 
-    public void removeItemSpecial(String name) {
-        if (items.containsKey(name)) {
-            items.get(name).special = Optional.empty();
-        } else {
-            throw new NoSuchElementException("item does not exist in the items");
+    public void removeItemSpecial(String name) throws NoSuchElementException {
+        checkItemExists(name);
+        items.get(name).special = Optional.empty();
+    }
+
+    private void checkItemExists(String name) throws NoSuchElementException {
+        if (!items.containsKey(name)) {
+            throw new NoSuchElementException("item does not exist in the catalog");
         }
     }
 }
