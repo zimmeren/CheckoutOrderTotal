@@ -2,6 +2,8 @@ package com.zimmeren.checkout;
 
 import org.junit.Test;
 
+import java.util.NoSuchElementException;
+
 import static org.junit.Assert.*;
 
 public class RegisterTest {
@@ -19,5 +21,16 @@ public class RegisterTest {
         float price = 3.50f;
         register.addItemToCatalog(item, price);
         assertEquals(price, register.getItemPriceFromCatalog(item), 0);
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void whenRemovingItemFromCatalogItsPriceCannotBeFound() {
+        Register register = new Register();
+        String item = "cookies";
+        float price = 3.50f;
+        register.addItemToCatalog(item, price);
+        assertEquals(price, register.getItemPriceFromCatalog(item), 0);
+        register.removeItemFromCatalog(item);
+        register.getItemPriceFromCatalog(item);
     }
 }

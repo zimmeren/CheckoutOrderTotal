@@ -2,6 +2,7 @@ package com.zimmeren.checkout;
 
 import java.util.Map;
 import java.util.HashMap;
+import java.util.NoSuchElementException;
 
 public class Register {
 
@@ -21,7 +22,15 @@ public class Register {
         catalog.put(item, price);
     }
 
-    public float getItemPriceFromCatalog(String item) {
-        return catalog.get(item);
+    public float getItemPriceFromCatalog(String item) throws NoSuchElementException {
+        if (catalog.containsKey(item)) {
+            return catalog.get(item);
+        } else {
+            throw new NoSuchElementException("item does not exist in the catalog");
+        }
+    }
+
+    public void removeItemFromCatalog(String item) {
+        catalog.remove(item);
     }
 }
