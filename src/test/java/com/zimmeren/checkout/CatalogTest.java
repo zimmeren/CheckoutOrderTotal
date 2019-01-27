@@ -106,6 +106,12 @@ public class CatalogTest {
         assertEquals(3.74f, catalog.getItemsPrice(item, 2), 0);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenSettingSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.setItemSpecial("fake item", 1f, 1f, 1f);
+    }
+
     @Test
     public void whenRemovingASpecialFromCatalogItemThePriceReflectsRegularPrice() {
         Catalog catalog = new Catalog();
@@ -115,6 +121,12 @@ public class CatalogTest {
         catalog.setItemSpecial(item, 1f, 1f, 1f);
         catalog.removeItemSpecial(item);
         assertEquals(4.98f, catalog.getItemsPrice(item, 2), 0);
+    }
+
+    @Test (expected = NoSuchElementException.class)
+    public void whenRemovingSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.removeItemSpecial("fake item");
     }
 
 }
