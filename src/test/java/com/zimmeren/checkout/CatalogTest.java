@@ -63,4 +63,10 @@ public class CatalogTest {
         assertEquals(price - markdown, catalog.getItemPrice(item), 0);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenSettingMarkdownOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.setItemMarkdown("fake item", 0.5f);
+    }
+
 }
