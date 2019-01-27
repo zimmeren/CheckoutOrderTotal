@@ -31,7 +31,6 @@ public class ItemTest {
         Item cookies = Item.of(name, price);
         cookies.markdown = markdown;
         assertEquals(price - markdown, cookies.calculatePrice(), 0);
-
     }
 
     @Test
@@ -41,6 +40,15 @@ public class ItemTest {
         Item cookies = Item.of(name, price);
         float quantity = 5f;
         assertEquals(price * quantity, cookies.calculatePriceOf(quantity), 0);
+    }
+
+    @Test
+    public void whenAFractionQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
+        String name = "Fish Sticks";
+        float price = 2.49f;
+        Item fishSticks = Item.of(name, price);
+        float quantity = 0.79f;
+        assertEquals(price * quantity, fishSticks.calculatePriceOf(quantity), 0);
     }
 
 }
