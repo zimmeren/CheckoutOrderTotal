@@ -17,6 +17,19 @@ public class Special {
     }
 
     public float priceOf(float quantity, float stickerPrice) {
-        return quantity * stickerPrice;
+        float price = 0f;
+        if (quantity - buy > 0) {
+            price += buy * stickerPrice;
+            quantity -= buy;
+        } else {
+            price += quantity * stickerPrice;
+            return price;
+        }
+        if (quantity - get > 0) {
+            price += get * (stickerPrice - (off * stickerPrice));
+        } else {
+            price += quantity * (stickerPrice - (off * stickerPrice));
+        }
+        return price;
     }
 }
