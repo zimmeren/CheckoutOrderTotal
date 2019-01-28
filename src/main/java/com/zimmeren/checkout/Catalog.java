@@ -53,10 +53,10 @@ public class Catalog {
     }
 
     public void setItemSpecial(String name, float buy, float forTotal) throws NoSuchElementException {
-        setItemSpecialWithLimit(name, buy, forTotal, 0f);
+        setItemSpecialWithLimit(name, buy, forTotal, 0);
     }
 
-    public void setItemSpecialWithLimit(String name, float buy, float forTotal, float limit) throws NoSuchElementException {
+    public void setItemSpecialWithLimit(String name, float buy, float forTotal, int limit) throws NoSuchElementException {
         checkItemExists(name);
         Special special = BuyFor.of(buy, forTotal, limit);
         items.get(name).special = Optional.of(special);
