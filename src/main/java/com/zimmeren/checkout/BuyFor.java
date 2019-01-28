@@ -18,6 +18,7 @@ public class BuyFor extends Special{
 
     public float priceOf(float quantity, float stickerPrice) {
         float price = 0f;
+        float rounds = 0f;
         while (quantity > 0f) {
             if (quantity < buy) {
                 price += quantity * stickerPrice;
@@ -25,6 +26,11 @@ public class BuyFor extends Special{
             } else {
                 price += forTotal;
                 quantity -= buy;
+            }
+            rounds++;
+            if (rounds == limit) {
+                price += quantity * stickerPrice;
+                break;
             }
         }
         return Utility.roundUpToCent(price);
