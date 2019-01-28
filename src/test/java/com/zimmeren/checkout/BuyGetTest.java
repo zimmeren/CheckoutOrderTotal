@@ -11,7 +11,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        float limit = 1f;
+        int limit = 1;
         BuyGet special = BuyGet.of(buy, get, off, limit);
         assertEquals(buy, special.buy, 0);
         assertEquals(get, special.get, 0);
@@ -24,7 +24,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 2f;
         float price = 2.99f;
         assertEquals(5.98f, special.priceOf(quantity, price), 0);
@@ -35,7 +35,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 4f;
         float price = 2.99f;
         assertEquals(8.97f, special.priceOf(quantity, price), 0);
@@ -46,7 +46,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 2f;
         float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 5f;
         float price = 2.99f;
         assertEquals(8.97f, special.priceOf(quantity, price), 0);
@@ -57,7 +57,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 1f;
         float off = 0.88f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 4f;
         float price = 2.99f;
         assertEquals(9.33f, special.priceOf(quantity, price), 0);
@@ -68,7 +68,7 @@ public class BuyGetTest {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 8f;
         float price = 2.99f;
         assertEquals(17.94f, special.priceOf(quantity, price), 0);
@@ -79,7 +79,7 @@ public class BuyGetTest {
         float buy = 2.3333f;
         float get = .6666f;
         float off = .7333f;
-        BuyGet special = BuyGet.of(buy, get, off, 0f);
+        BuyGet special = BuyGet.of(buy, get, off, 0);
         float quantity = 8f;
         float price = 1.65f;
         assertEquals(11.59f, special.priceOf(quantity, price), 0);
@@ -90,7 +90,7 @@ public class BuyGetTest {
         float buy = 2f;
         float get = 1f;
         float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 2f);
+        BuyGet special = BuyGet.of(buy, get, off, 2);
         float quantity = 12f;
         float price = 2.99f;
         assertEquals(29.9f, special.priceOf(quantity, price), 0);
