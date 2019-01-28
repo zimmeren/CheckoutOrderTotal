@@ -48,6 +48,12 @@ public class Catalog {
         items.get(name).special = Optional.of(special);
     }
 
+    public void setItemSpecial(String name, float buy, float forTotal) throws NoSuchElementException {
+        checkItemExists(name);
+        Special special = BuyFor.of(buy, forTotal);
+        items.get(name).special = Optional.of(special);
+    }
+
     public void removeItemSpecial(String name) throws NoSuchElementException {
         checkItemExists(name);
         items.get(name).special = Optional.empty();

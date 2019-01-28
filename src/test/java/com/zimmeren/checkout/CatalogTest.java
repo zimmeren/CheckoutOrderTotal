@@ -96,6 +96,16 @@ public class CatalogTest {
     }
 
     @Test
+    public void whenSettingNewBuyForSpecialForCatalogItemThePriceReflectsSpecial() {
+        Catalog catalog = new Catalog();
+        String item = "mozzi sticks";
+        float price = 5.99f;
+        catalog.addItem(item, price);
+        catalog.setItemSpecial(item, 3f, 10.99f);
+        assertEquals(21.98f, catalog.getItemsPrice(item, 6f), 0);
+    }
+
+    @Test
     public void whenUpdatingASpecialFromCatalogItemThePriceReflectsNewSpecial() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
