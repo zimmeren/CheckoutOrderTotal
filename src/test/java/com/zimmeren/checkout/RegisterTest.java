@@ -167,6 +167,20 @@ public class RegisterTest {
     }
 
     @Test
+    public void whenAddingBuyGetWithLimitToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+        Register register = new Register();
+        String item = "doritos";
+        float price = 1.67f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecialWithLimit(item, 1f, 1f, 1f, 1);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        assertEquals(5.01f, register.getTotal(), 0);
+    }
+
+    @Test
     public void whenAddingBuyForToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
         Register register = new Register();
         String item = "doritos";
