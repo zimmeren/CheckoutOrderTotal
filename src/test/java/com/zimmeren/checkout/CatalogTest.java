@@ -96,6 +96,16 @@ public class CatalogTest {
     }
 
     @Test
+    public void whenSettingNewBuyGetWithLimitSpecialForCatalogItemThePriceReflectsSpecial() {
+        Catalog catalog = new Catalog();
+        String item = "fish sticks";
+        float price = 2.49f;
+        catalog.addItem(item, price);
+        catalog.setItemSpecialWithLimit(item, 1f, 1f, 1f, 1);
+        assertEquals(7.47f, catalog.getItemsPrice(item, 4), 0);
+    }
+
+    @Test
     public void whenSettingNewBuyForSpecialForCatalogItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "mozzi sticks";
