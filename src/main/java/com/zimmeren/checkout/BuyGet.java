@@ -20,6 +20,7 @@ public class BuyGet extends Special{
 
     public float priceOf(float quantity, float stickerPrice) {
         float price = 0f;
+        float rounds = 0f;
         while (quantity > 0) {
             if (quantity - buy > 0) {
                 price += buy * stickerPrice;
@@ -33,6 +34,11 @@ public class BuyGet extends Special{
                 quantity -= get;
             } else {
                 price += quantity * (stickerPrice - (off * stickerPrice));
+                break;
+            }
+            rounds++;
+            if (rounds == limit) {
+                price += quantity * stickerPrice;
                 break;
             }
         }

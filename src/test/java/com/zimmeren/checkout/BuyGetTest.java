@@ -85,4 +85,15 @@ public class BuyGetTest {
         assertEquals(11.59f, special.priceOf(quantity, price), 0);
     }
 
+    @Test
+    public void whenCalculatingPriceOfBuyGetWithLimitVerifyAfterLimitStickerPriceIsCharged() {
+        float buy = 2f;
+        float get = 1f;
+        float off = 1f;
+        BuyGet special = BuyGet.of(buy, get, off, 2f);
+        float quantity = 12f;
+        float price = 2.99f;
+        assertEquals(29.9f, special.priceOf(quantity, price), 0);
+    }
+
 }
