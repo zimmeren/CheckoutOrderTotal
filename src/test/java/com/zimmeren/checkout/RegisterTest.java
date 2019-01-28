@@ -154,19 +154,6 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyGetToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
-        Register register = new Register();
-        String item = "ground beef";
-        float price = 1.49f;
-        register.catalog.addItem(item, price);
-        register.catalog.setItemSpecial(item, 0.5f, 0.25f, 0.25f);
-        register.purchaseWeighted(item, 0.49f);
-        assertEquals(.73f, register.getTotal(), 0);
-        register.purchaseWeighted(item, 0.52f);
-        assertEquals(1.42f, register.getTotal(), 0);
-    }
-
-    @Test
     public void whenAddingBuyGetWithLimitToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
         Register register = new Register();
         String item = "doritos";
@@ -178,6 +165,19 @@ public class RegisterTest {
         register.purchaseEaches(item);
         register.purchaseEaches(item);
         assertEquals(5.01f, register.getTotal(), 0);
+    }
+
+    @Test
+    public void whenAddingBuyGetToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+        Register register = new Register();
+        String item = "ground beef";
+        float price = 1.49f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecial(item, 0.5f, 0.25f, 0.25f);
+        register.purchaseWeighted(item, 0.49f);
+        assertEquals(.73f, register.getTotal(), 0);
+        register.purchaseWeighted(item, 0.52f);
+        assertEquals(1.42f, register.getTotal(), 0);
     }
 
     @Test
@@ -195,6 +195,20 @@ public class RegisterTest {
         assertEquals(3f, register.getTotal(), 0);
         register.purchaseEaches(item);
         assertEquals(4.67f, register.getTotal(), 0);
+    }
+
+    @Test
+    public void whenAddingBuyForWithLimitToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+        Register register = new Register();
+        String item = "doritos";
+        float price = 1.67f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecialWithLimit(item, 2f, 3f, 1);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        assertEquals(6.34f, register.getTotal(), 0);
     }
 
     @Test
