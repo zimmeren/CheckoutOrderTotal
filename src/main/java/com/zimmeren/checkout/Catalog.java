@@ -43,8 +43,12 @@ public class Catalog {
     }
 
     public void setItemSpecial(String name, float buy, float get, float off) throws NoSuchElementException {
+        setItemSpecialWithLimit(name, buy, get, off, 0f);
+    }
+
+    public void setItemSpecialWithLimit(String name, float buy, float get, float off, float limit) throws NoSuchElementException {
         checkItemExists(name);
-        Special special = BuyGet.of(buy, get, off);
+        Special special = BuyGet.of(buy, get, off, limit);
         items.get(name).special = Optional.of(special);
     }
 

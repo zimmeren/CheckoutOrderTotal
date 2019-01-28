@@ -129,6 +129,12 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
+    public void whenSettingBuyGetSpecialWithLimitOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.setItemSpecialWithLimit("fake item", 1f, 1f, 1f, 1f);
+    }
+
+    @Test (expected = NoSuchElementException.class)
     public void whenSettingBuyForSpecialWithLimitOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecialWithLimit("fake item", 1f, 1f, 1f);

@@ -5,15 +5,17 @@ public class BuyGet extends Special{
     public float buy;
     public float get;
     public float off;
+    public float limit;
 
-    private BuyGet(float buy, float get, float off) {
+    private BuyGet(float buy, float get, float off, float limit) {
         this.buy = buy;
         this.get = get;
         this.off = off;
+        this.limit = limit;
     }
 
-    public static BuyGet of(float buy, float get, float off) {
-        return new BuyGet(buy, get, off);
+    public static BuyGet of(float buy, float get, float off, float limit) {
+        return new BuyGet(buy, get, off, limit);
     }
 
     public float priceOf(float quantity, float stickerPrice) {
