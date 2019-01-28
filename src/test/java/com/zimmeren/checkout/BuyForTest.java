@@ -25,4 +25,14 @@ public class BuyForTest {
         assertEquals(5.98f, special.priceOf(quantity, price), 0);
     }
 
+    @Test
+    public void whenCalculatingPriceOfBuyForThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
+        float buy = 3f;
+        float forTotal = 5f;
+        BuyFor special = BuyFor.of(buy, forTotal);
+        float quantity = 3f;
+        float price = 2.99f;
+        assertEquals(5f, special.priceOf(quantity, price), 0);
+    }
+
 }
