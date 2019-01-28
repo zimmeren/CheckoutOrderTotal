@@ -55,4 +55,14 @@ public class BuyForTest {
         assertEquals(10f, special.priceOf(quantity, price), 0);
     }
 
+    @Test
+    public void whenCalculatingFractionalValuesWithButForSpecialVerifyDiscountIsAppliedCorrectly() {
+        float buy = 2.333f;
+        float forTotal = 2.03f;
+        BuyFor special = BuyFor.of(buy, forTotal);
+        float quantity = 4.977f;
+        float price = 1.03f;
+        assertEquals(4.39f, special.priceOf(quantity, price), 0);
+    }
+
 }
