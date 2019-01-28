@@ -122,6 +122,12 @@ public class CatalogTest {
         catalog.setItemSpecial("fake item", 1f, 1f, 1f);
     }
 
+    @Test (expected = NoSuchElementException.class)
+    public void whenSettingBuyForSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+        Catalog catalog = new Catalog();
+        catalog.setItemSpecial("fake item", 1f, 1f);
+    }
+
     @Test
     public void whenRemovingASpecialFromCatalogItemThePriceReflectsRegularPrice() {
         Catalog catalog = new Catalog();
