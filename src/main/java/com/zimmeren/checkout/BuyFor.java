@@ -16,6 +16,7 @@ public class BuyFor extends Special{
 
     public float priceOf(float quantity, float stickerPrice) {
         float price = 0f;
+        price = quantity * stickerPrice;
         return Utility.roundUpToCent(price);
     }
 }
