@@ -4,69 +4,69 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SpecialTest {
+public class BuyGetTest {
 
     @Test
-    public void whenCreatingNewSpecialTheBuyGetOffMatchThePassedParameters() {
+    public void whenCreatingNewBuyGetVerifyPropertiesMatchThePassedParameters() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         assertEquals(buy, special.buy, 0);
         assertEquals(get, special.get, 0);
         assertEquals(off, special.off, 0);
     }
 
     @Test
-    public void whenCalculatingPriceOfSpecialThatDoesNotMeetBuyRequirementStickPriceIsCharged() {
+    public void whenCalculatingPriceOfBuyGetThatDoesNotMeetBuyRequirementStickPriceIsCharged() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 2f;
         float price = 2.99f;
         assertEquals(5.98f, special.priceOf(quantity, price), 0);
     }
 
     @Test
-    public void whenCalculatingPriceOfSpecialThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
+    public void whenCalculatingPriceOfBuyGetThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 4f;
         float price = 2.99f;
         assertEquals(8.97f, special.priceOf(quantity, price), 0);
     }
 
     @Test
-    public void whenCalculatingPriceOfSpecialThatGetsTwoDiscountItemsVerifyTheWholeDiscountIsApplied() {
+    public void whenCalculatingPriceOfBuyGetThatGetsTwoDiscountItemsVerifyTheWholeDiscountIsApplied() {
         float buy = 3f;
         float get = 2f;
         float off = 1f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 5f;
         float price = 2.99f;
         assertEquals(8.97f, special.priceOf(quantity, price), 0);
     }
 
     @Test
-    public void whenCalculatingPriceOfSpecialThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
+    public void whenCalculatingPriceOfBuyGetThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
         float buy = 3f;
         float get = 1f;
         float off = 0.88f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 4f;
         float price = 2.99f;
         assertEquals(9.33f, special.priceOf(quantity, price), 0);
     }
 
     @Test
-    public void whenCalculatingPriceOfSpecialThatQualifiesTwiceVerifyDiscountIsApplied() {
+    public void whenCalculatingPriceOfBuyGetThatQualifiesTwiceVerifyDiscountIsApplied() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 8f;
         float price = 2.99f;
         assertEquals(17.94f, special.priceOf(quantity, price), 0);
@@ -77,7 +77,7 @@ public class SpecialTest {
         float buy = 2.3333f;
         float get = .6666f;
         float off = .7333f;
-        Special special = Special.of(buy, get, off);
+        BuyGet special = BuyGet.of(buy, get, off);
         float quantity = 8f;
         float price = 1.65f;
         assertEquals(11.59f, special.priceOf(quantity, price), 0);

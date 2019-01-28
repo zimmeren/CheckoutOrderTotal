@@ -2,7 +2,6 @@ package com.zimmeren.checkout;
 
 import org.junit.Test;
 
-import java.util.NoSuchElementException;
 import java.util.Optional;
 
 import static org.junit.Assert.*;
@@ -69,7 +68,7 @@ public class ItemTest {
         float markdown = 0.75f;
         Item cookies = Item.of(name, price);
         cookies.markdown = markdown;
-        Special special = Special.of(1f, 1f, 1f);
+        Special special = BuyGet.of(1f, 1f, 1f);
         cookies.special = Optional.of(special);
         assertEquals(price, cookies.calculatePriceOf(2), 0);
     }

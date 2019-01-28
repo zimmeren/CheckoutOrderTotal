@@ -139,7 +139,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingSpecialToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
         Register register = new Register();
         String item = "doritos";
         float price = 1.67f;
@@ -154,7 +154,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingSpecialToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
         Register register = new Register();
         String item = "ground beef";
         float price = 1.49f;

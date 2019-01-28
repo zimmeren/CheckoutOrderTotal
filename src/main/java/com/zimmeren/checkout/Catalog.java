@@ -44,7 +44,7 @@ public class Catalog {
 
     public void setItemSpecial(String name, float buy, float get, float off) throws NoSuchElementException {
         checkItemExists(name);
-        Special special = Special.of(buy, get, off);
+        Special special = BuyGet.of(buy, get, off);
         items.get(name).special = Optional.of(special);
     }
 

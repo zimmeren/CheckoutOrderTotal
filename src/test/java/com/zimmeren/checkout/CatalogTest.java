@@ -86,7 +86,7 @@ public class CatalogTest {
     }
 
     @Test
-    public void whenSettingNewSpecialForCatalogItemThePriceReflectsSpecial() {
+    public void whenSettingNewBuyGetSpecialForCatalogItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
         float price = 2.49f;
@@ -107,7 +107,7 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingBuyGetSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecial("fake item", 1f, 1f, 1f);
     }
