@@ -236,4 +236,16 @@ public class RegisterTest {
         assertEquals(3.83f, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenAddingBuyForWithLimitToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+        Register register = new Register();
+        String item = "ground beef";
+        float price = 1.49f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecialWithLimit(item, 2.5f, 3.02f, 1);
+        register.purchaseWeighted(item, 3f);
+        register.purchaseWeighted(item, 3f);
+        assertEquals(8.24f, register.getTotal(), 0);
+    }
+
 }
