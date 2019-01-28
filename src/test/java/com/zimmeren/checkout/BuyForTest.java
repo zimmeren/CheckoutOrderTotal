@@ -64,7 +64,7 @@ public class BuyForTest {
         BuyFor special = BuyFor.of(buy, forTotal, 0f);
         float quantity = 4.977f;
         float price = 1.03f;
-        assertEquals(4.39f, special.priceOf(quantity, price), 0);
+        assertEquals(4.38f, special.priceOf(quantity, price), 0);
     }
 
 }
