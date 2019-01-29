@@ -263,4 +263,17 @@ public class RegisterTest {
         assertEquals(1.98f, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenRemovingAScannedWeightedItemTheBuyGetSpecialIsInvalidated() {
+        Register register = new Register();
+        String item = "Roasted Chicken";
+        float price = 3.99f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecial(item, 1.5f, 0.5f, 1f);
+        register.purchaseWeighted(item, 2f);
+        assertEquals(5.99f, register.getTotal(), 0);
+        register.removeWeighted(item, .75f);
+        assertEquals(4.99f, register.getTotal(), 0);
+    }
+
 }
