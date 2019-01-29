@@ -8,92 +8,53 @@ public class BuyGetTest {
 
     @Test
     public void whenCreatingNewBuyGetVerifyPropertiesMatchThePassedParameters() {
-        float buy = 3f;
-        float get = 1f;
-        float off = 1f;
-        int limit = 1;
-        BuyGet special = BuyGet.of(buy, get, off, limit);
-        assertEquals(buy, special.buy, 0);
-        assertEquals(get, special.get, 0);
-        assertEquals(off, special.off, 0);
-        assertEquals(limit, special.limit, 0);
+        BuyGet special = BuyGet.of(3f, 1f, 1f, 1);
+        assertEquals(3f, special.buy, 0);
+        assertEquals(1f, special.get, 0);
+        assertEquals(1f, special.off, 0);
+        assertEquals(1, special.limit, 0);
     }
 
     @Test
     public void whenCalculatingPriceThatDoesNotMeetBuyRequirementStickPriceIsCharged() {
-        float buy = 3f;
-        float get = 1f;
-        float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 2f;
-        float price = 2.99f;
-        assertEquals(5.98f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(3f, 1f, 1f, 0);
+        assertEquals(5.98f, special.priceOf(2f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
-        float buy = 3f;
-        float get = 1f;
-        float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 4f;
-        float price = 2.99f;
-        assertEquals(8.97f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(3f, 1f, 1f, 0);
+        assertEquals(8.97f, special.priceOf(4f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsTwoDiscountItemsVerifyTheWholeDiscountIsAppliedToBoth() {
-        float buy = 3f;
-        float get = 2f;
-        float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 5f;
-        float price = 2.99f;
-        assertEquals(8.97f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(3f, 2f, 1f, 0);
+        assertEquals(8.97f, special.priceOf(5f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
-        float buy = 3f;
-        float get = 1f;
-        float off = 0.88f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 4f;
-        float price = 2.99f;
-        assertEquals(9.33f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(3f, 1f, 0.88f, 0);
+        assertEquals(9.33f, special.priceOf(4f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatQualifiesTwiceVerifyDiscountIsAppliedTwice() {
-        float buy = 3f;
-        float get = 1f;
-        float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 8f;
-        float price = 2.99f;
-        assertEquals(17.94f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(3f, 1f, 1f, 0);
+        assertEquals(17.94f, special.priceOf(8f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceOfFractionalQuantifiersVerifyTheExpectedDiscountIsApplied() {
-        float buy = 2.3333f;
-        float get = .6666f;
-        float off = .7333f;
-        BuyGet special = BuyGet.of(buy, get, off, 0);
-        float quantity = 8f;
-        float price = 1.65f;
-        assertEquals(11.59f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(2.3333f, .6666f, .7333f, 0);
+        assertEquals(11.59f, special.priceOf(8f, 1.65f), 0);
     }
 
     @Test
     public void whenCalculatingPriceWithLimitVerifyAfterLimitStickerPriceIsCharged() {
-        float buy = 2f;
-        float get = 1f;
-        float off = 1f;
-        BuyGet special = BuyGet.of(buy, get, off, 2);
-        float quantity = 12f;
-        float price = 2.99f;
-        assertEquals(29.9f, special.priceOf(quantity, price), 0);
+        BuyGet special = BuyGet.of(2f, 1f, 1f, 2);
+        assertEquals(29.9f, special.priceOf(12f, 2.99f), 0);
     }
 
 }
