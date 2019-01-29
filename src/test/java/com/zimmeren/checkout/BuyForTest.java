@@ -18,7 +18,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyForThatDoesNotMeetBuyRequirementStickerPriceIsCharged() {
+    public void whenCalculatingPriceThatDoesNotMeetBuyRequirementStickerPriceIsCharged() {
         float buy = 3f;
         float forTotal = 5f;
         BuyFor special = BuyFor.of(buy, forTotal, 0);
@@ -28,7 +28,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyForThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
+    public void whenCalculatingPriceThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
         float buy = 3f;
         float forTotal = 5f;
         BuyFor special = BuyFor.of(buy, forTotal, 0);
@@ -38,7 +38,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyForThatGetsOneDiscountAndThenBuysMoreVerifyDiscountIsAppliedPartially() {
+    public void whenCalculatingPriceThatGetsOneDiscountAndThenBuysMoreVerifyDiscountIsAppliedJustForDiscountedQuantity() {
         float buy = 3f;
         float forTotal = 5f;
         BuyFor special = BuyFor.of(buy, forTotal, 0);
@@ -48,7 +48,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyForThatGetsMultipleDiscountVerifyDiscountAreApplied() {
+    public void whenCalculatingPriceThatGetsMultipleDiscountVerifyMultipleDiscountAreApplied() {
         float buy = 3f;
         float forTotal = 5f;
         BuyFor special = BuyFor.of(buy, forTotal, 0);
@@ -58,7 +58,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingFractionalValuesWithButForSpecialVerifyDiscountIsAppliedCorrectly() {
+    public void whenCalculatingFractionalValuesVerifyDiscountIsApplied() {
         float buy = 2.333f;
         float forTotal = 2.03f;
         BuyFor special = BuyFor.of(buy, forTotal, 0);
@@ -68,7 +68,7 @@ public class BuyForTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyForWithLimitVerifyAfterLimitStickerPriceIsCharged() {
+    public void whenCalculatingPriceWithLimitVerifyAfterLimitStickerPriceIsCharged() {
         float buy = 2f;
         float forTotal = 5f;
         BuyFor special = BuyFor.of(buy, forTotal, 2);
