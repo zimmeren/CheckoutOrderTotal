@@ -18,7 +18,7 @@ public class ItemTest {
     }
 
     @Test
-    public void whenNoDiscountsAreAppliedCalculateItemPriceReturnsTheRegularPrice() {
+    public void whenNoDiscountsAreAppliedCalculatePriceReturnsTheRegularPrice() {
         String name = "Cookies";
         float price = 3.50f;
         Item cookies = Item.of(name, price);
@@ -26,7 +26,7 @@ public class ItemTest {
     }
 
     @Test
-    public void whenSettingAMarkdownTheCalculatePriceItemReturnsThePriceMinusMarkdown() {
+    public void whenSettingAMarkdownTheCalculatePriceReturnsThePriceMinusMarkdown() {
         String name = "Cookies";
         float price = 3.50f;
         float markdown = 0.75f;
@@ -45,7 +45,7 @@ public class ItemTest {
     }
 
     @Test
-    public void whenAFractionQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
+    public void whenAFractionalQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
         String name = "Fish Sticks";
         float price = 2.49f;
         Item fishSticks = Item.of(name, price);
@@ -54,7 +54,7 @@ public class ItemTest {
     }
 
     @Test
-    public void whenTryingToAccessAnOptionalSpecialThatDoesNotExistPresentReturnsFalse() {
+    public void whenTryingToAccessAnOptionalSpecialThatDoesNotExistIsPresentReturnsFalse() {
         String name = "Fish Sticks";
         float price = 2.49f;
         Item fishSticks = Item.of(name, price);
