@@ -11,65 +11,54 @@ public class ItemTest {
     @Test
     public void whenCreatingNewItemTheNameAndPriceMatchThePassedParameters() {
         String name = "Cookies";
-        float price = 3.50f;
-        Item cookies = Item.of(name, price);
+        Item cookies = Item.of(name, 3.50f);
         assertEquals(name, cookies.name);
-        assertEquals(price, cookies.price, 0);
+        assertEquals(3.50f, cookies.price, 0);
     }
 
     @Test
     public void whenNoDiscountsAreAppliedCalculatePriceReturnsTheRegularPrice() {
         String name = "Cookies";
-        float price = 3.50f;
-        Item cookies = Item.of(name, price);
-        assertEquals(price, cookies.calculatePrice(), 0);
+        Item cookies = Item.of(name, 3.50f);
+        assertEquals(3.50f, cookies.calculatePrice(), 0);
     }
 
     @Test
     public void whenSettingAMarkdownTheCalculatePriceReturnsThePriceMinusMarkdown() {
         String name = "Cookies";
-        float price = 3.50f;
-        float markdown = 0.75f;
-        Item cookies = Item.of(name, price);
-        cookies.markdown = markdown;
-        assertEquals(price - markdown, cookies.calculatePrice(), 0);
+        Item cookies = Item.of(name, 3.50f);
+        cookies.markdown = 0.75f;
+        assertEquals(2.75f, cookies.calculatePrice(), 0);
     }
 
     @Test
     public void whenMultipleQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
         String name = "Cookies";
-        float price = 3.50f;
-        Item cookies = Item.of(name, price);
-        float quantity = 5f;
-        assertEquals(price * quantity, cookies.calculatePriceOf(quantity), 0);
+        Item cookies = Item.of(name, 3.50f);
+        assertEquals(17.50f, cookies.calculatePriceOf(5f), 0);
     }
 
     @Test
     public void whenAFractionalQuantityOfAnItemHasItsPriceCalculatedItReturnsTheMultipliedCost() {
         String name = "Fish Sticks";
-        float price = 2.49f;
-        Item fishSticks = Item.of(name, price);
-        float quantity = 0.79f;
-        assertEquals(1.97f, fishSticks.calculatePriceOf(quantity), 0);
+        Item fishSticks = Item.of(name, 2.49f);
+        assertEquals(1.97f, fishSticks.calculatePriceOf(0.79f), 0);
     }
 
     @Test
     public void whenTryingToAccessAnOptionalSpecialThatDoesNotExistIsPresentReturnsFalse() {
         String name = "Fish Sticks";
-        float price = 2.49f;
-        Item fishSticks = Item.of(name, price);
+        Item fishSticks = Item.of(name, 2.49f);
         assertFalse(fishSticks.special.isPresent());
     }
 
     @Test
     public void whenSpecialAndMarkdownBothExistTheSpecialPriceIsReturned() {
         String name = "Cookies";
-        float price = 3.50f;
-        float markdown = 0.75f;
-        Item cookies = Item.of(name, price);
-        cookies.markdown = markdown;
+        Item cookies = Item.of(name, 3.50f);
+        cookies.markdown = 0.75f;
         Special special = BuyGet.of(1f, 1f, 1f, 0);
         cookies.special = Optional.of(special);
-        assertEquals(price, cookies.calculatePriceOf(2), 0);
+        assertEquals(3.50f, cookies.calculatePriceOf(2f), 0);
     }
 }
