@@ -9,13 +9,13 @@ import static org.junit.Assert.*;
 public class RegisterTest {
 
     @Test
-    public void whenRegisterPurchasesAreEmptyThenTotalIsZero() {
+    public void whenThereHaveBeenNoPurchasesThenTotalIsZero() {
         Register register = new Register();
         assertEquals(0.0f, register.getTotal(), 0);
     }
 
     @Test
-    public void whenAddingPurchaseToRegisterTotalIncreases() {
+    public void whenAddingPurchaseTotalIncreases() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -25,13 +25,13 @@ public class RegisterTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenAddingPurchaseToRegisterThatDoesNotExistAnExceptionIsThrown() {
+    public void whenAddingPurchaseThatDoesNotExistAnExceptionIsThrown() {
         Register register = new Register();
         register.purchaseEaches("fake item");
     }
 
     @Test
-    public void whenRemovingPurchaseFromRegisterTotalDecreases() {
+    public void whenRemovingPurchaseTotalDecreases() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -42,13 +42,13 @@ public class RegisterTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenRemovingPurchaseFromRegisterThatDoesNotExistAnExceptionIsThrown() {
+    public void whenRemovingPurchaseThatDoesNotExistAnExceptionIsThrown() {
         Register register = new Register();
         register.removeEaches("fake item");
     }
 
     @Test
-    public void whenPurchasingMarkedDownItemOnRegisterTheMarkedDownPriceIsReflected() {
+    public void whenPurchasingMarkedDownItemTheTotalPriceUsesTheMarkdownPrice() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -60,7 +60,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenPurchasingMultipleOfAnItemOnRegisterTheTotalPriceIsForThatQuantity() {
+    public void whenPurchasingMultipleOfAnItemTheTotalPriceIsForThatQuantity() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -74,7 +74,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenMultipleItemsHaveBeenPurchasedSomeCanBeRemovedAndOnRegisterTheTotalPriceIsForThatQuantity() {
+    public void whenMultipleItemsHaveBeenPurchasedSomeCanBeRemovedAndTheTotalPriceIsForThatQuantity() {
         Register register = new Register();
         String item = "cookies";
         float price = 3.50f;
@@ -90,7 +90,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenPurchasingWeightedItemOnRegisterTheTotalPriceIsForThatWeight() {
+    public void whenPurchasingAWeightedItemTheTotalPriceIsForThatWeight() {
         Register register = new Register();
         String item = "chicken fingers";
         float price = 2.98f;
@@ -101,7 +101,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingWeightedItemOnRegisterTheTotalPriceReturnsToZero() {
+    public void whenRemovingWeightedItemTheTotalPriceReturnsToZero() {
         Register register = new Register();
         String item = "chicken fingers";
         float price = 2.98f;
@@ -113,7 +113,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingPartialWeightedItemOnRegisterTheTotalPriceReturnsThePartialAmountLeft() {
+    public void whenRemovingPartialWeightedItemTheTotalPriceReturnsThePartialAmountLeft() {
         Register register = new Register();
         String item = "chicken fingers";
         float price = 2.98f;
@@ -126,7 +126,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingMoreWeightedItemThanPurchasedOnRegisterItWillProtectAndReturnZero() {
+    public void whenRemovingMoreWeightedItemThanPurchasedItWillProtectItselfAndReturnZero() {
         Register register = new Register();
         String item = "chicken fingers";
         float price = 2.98f;
@@ -139,7 +139,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyGetToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetToEachesItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "doritos";
         float price = 1.67f;
@@ -154,7 +154,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyGetWithLimitToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetWithLimitToEachesItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "doritos";
         float price = 1.67f;
@@ -168,7 +168,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyGetToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetToWeightedItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "ground beef";
         float price = 1.49f;
@@ -181,7 +181,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyGetWithLimitToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyGetWithLimitToWeightedItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "ground beef";
         float price = 1.49f;
@@ -193,7 +193,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyForToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyForToEachesItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "doritos";
         float price = 1.67f;
@@ -210,7 +210,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyForWithLimitToEachesItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyForWithLimitToEachesItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "doritos";
         float price = 1.67f;
@@ -224,7 +224,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyForToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyForToWeightedItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "ground beef";
         float price = 1.49f;
@@ -237,7 +237,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenAddingBuyForWithLimitToWeightedItemInRegisterTheSpecialPriceWillBeInTotalWhenPurchasedOnceQualified() {
+    public void whenAddingBuyForWithLimitToWeightedItemTheSpecialPriceWillBeInTotalPriceOnceQualified() {
         Register register = new Register();
         String item = "ground beef";
         float price = 1.49f;
@@ -249,7 +249,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingAScannedEachesItemTheBuyForSpecialIsInvalidated() {
+    public void whenRemovingAPurchasedEachesItemTheBuyForSpecialIsInvalidated() {
         Register register = new Register();
         String item = "chaco taco";
         float price = .99f;
@@ -264,7 +264,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenRemovingAScannedWeightedItemTheBuyGetSpecialIsInvalidated() {
+    public void whenRemovingAPurchasedWeightedItemTheBuyGetSpecialIsInvalidated() {
         Register register = new Register();
         String item = "roasted chicken";
         float price = 3.99f;
@@ -277,7 +277,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void whenShoppingForABunchOfDifferentItemsWithMarkdownsAndSpecialsTheCorrectTotalIsCalculated() {
+    public void whenShoppingForABunchOfDifferentItemsWithMarkdownsAndSpecialsTheCorrectTotalPriceIsCalculated() {
         Register register = new Register();
         register.catalog.addItem("roasted chicken", 3.99f);
         register.catalog.addItem("chaco taco", 0.99f);
