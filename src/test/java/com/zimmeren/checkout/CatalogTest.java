@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class CatalogTest {
 
     @Test
-    public void whenAddingItemToCatalogItsPriceCanBeFound() {
+    public void whenAddingItemItsPriceCanBeFound() {
         Catalog catalog = new Catalog();
         String item = "cookies";
         float price = 3.50f;
@@ -18,7 +18,7 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenRemovingItemFromCatalogItsPriceCannotBeFound() {
+    public void whenRemovingItemItsPriceCannotBeFound() {
         Catalog catalog = new Catalog();
         String item = "cookies";
         float price = 3.50f;
@@ -29,13 +29,13 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenRemovingNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenRemovingNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.removeItem("fake item");
     }
 
     @Test
-    public void whenUpdatingItemInCatalogItsPriceIsUpdated() {
+    public void whenUpdatingItemItsPriceIsUpdated() {
         Catalog catalog = new Catalog();
         String item = "cookies";
         float price = 3.50f;
@@ -47,13 +47,13 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenUpdatingNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenUpdatingNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemPrice("fake item", 0.0f);
     }
 
     @Test
-    public void whenSettingItemMarkdownInCatalogItsPriceIsUpdated() {
+    public void whenSettingItemMarkdownItsPriceIsUpdated() {
         Catalog catalog = new Catalog();
         String item = "cookies";
         float price = 3.50f;
@@ -64,13 +64,13 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingMarkdownOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingMarkdownOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemMarkdown("fake item", 0.5f);
     }
 
     @Test
-    public void whenGettingPriceOfMultipleOfAnItemTheCatalogReturnsTheMultipliedCost() {
+    public void whenGettingPriceOfMultipleOfAnItemReturnsTheMultipliedCost() {
         Catalog catalog = new Catalog();
         String item = "cookies";
         float price = 3.50f;
@@ -80,13 +80,13 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenGettingPriceOfMultipleOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenGettingPriceOfMultipleOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.getItemsPrice("fake item", 5);
     }
 
     @Test
-    public void whenSettingNewBuyGetSpecialForCatalogItemThePriceReflectsSpecial() {
+    public void whenSettingNewBuyGetSpecialForItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
         float price = 2.49f;
@@ -96,7 +96,7 @@ public class CatalogTest {
     }
 
     @Test
-    public void whenSettingNewBuyGetWithLimitSpecialForCatalogItemThePriceReflectsSpecial() {
+    public void whenSettingNewBuyGetWithLimitSpecialForItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
         float price = 2.49f;
@@ -106,7 +106,7 @@ public class CatalogTest {
     }
 
     @Test
-    public void whenSettingNewBuyForSpecialForCatalogItemThePriceReflectsSpecial() {
+    public void whenSettingNewBuyForSpecialForItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "mozzi sticks";
         float price = 5.99f;
@@ -116,7 +116,7 @@ public class CatalogTest {
     }
 
     @Test
-    public void whenSettingNewBuyForWithLimitSpecialForCatalogItemThePriceReflectsSpecial() {
+    public void whenSettingNewBuyForWithLimitSpecialForItemThePriceReflectsSpecial() {
         Catalog catalog = new Catalog();
         String item = "mozzi sticks";
         float price = 5.99f;
@@ -126,7 +126,7 @@ public class CatalogTest {
     }
 
     @Test
-    public void whenUpdatingASpecialFromCatalogItemThePriceReflectsNewSpecial() {
+    public void whenUpdatingASpecialOnAnItemThePriceReflectsNewSpecial() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
         float price = 2.49f;
@@ -137,31 +137,31 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingBuyGetSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingBuyGetSpecialOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecial("fake item", 1f, 1f, 1f);
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingBuyForSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingBuyForSpecialOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecial("fake item", 1f, 1f);
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingBuyGetSpecialWithLimitOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingBuyGetSpecialWithLimitOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecialWithLimit("fake item", 1f, 1f, 1f, 1);
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenSettingBuyForSpecialWithLimitOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenSettingBuyForSpecialWithLimitOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.setItemSpecialWithLimit("fake item", 1f, 1f, 1);
     }
 
     @Test
-    public void whenRemovingASpecialFromCatalogItemThePriceReflectsRegularPrice() {
+    public void whenRemovingASpecialFromItemThePriceReflectsRegularPrice() {
         Catalog catalog = new Catalog();
         String item = "fish sticks";
         float price = 2.49f;
@@ -172,7 +172,7 @@ public class CatalogTest {
     }
 
     @Test (expected = NoSuchElementException.class)
-    public void whenRemovingSpecialOfAnItemOnNonExistentObjectFromCatalogExceptionIsThrown() {
+    public void whenRemovingSpecialOfAnItemOnNonExistentItemExceptionIsThrown() {
         Catalog catalog = new Catalog();
         catalog.removeItemSpecial("fake item");
     }
