@@ -8,73 +8,46 @@ public class BuyForTest {
 
     @Test
     public void whenCreatingNewBuyForVerifyPropertiesMatchThePassedParameters() {
-        float buy = 3f;
-        float forTotal = 5f;
-        int limit = 1;
-        BuyFor special = BuyFor.of(buy, forTotal, limit);
-        assertEquals(buy, special.buy, 0);
-        assertEquals(forTotal, special.forTotal, 0);
-        assertEquals(limit, special.limit, 0);
+        BuyFor special = BuyFor.of(3f, 5f, 1);
+        assertEquals(3f, special.buy, 0);
+        assertEquals(5f, special.forTotal, 0);
+        assertEquals(1, special.limit, 0);
     }
 
     @Test
     public void whenCalculatingPriceThatDoesNotMeetBuyRequirementStickerPriceIsCharged() {
-        float buy = 3f;
-        float forTotal = 5f;
-        BuyFor special = BuyFor.of(buy, forTotal, 0);
-        float quantity = 2f;
-        float price = 2.99f;
-        assertEquals(5.98f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(3f, 5f, 0);
+        assertEquals(5.98f, special.priceOf(2f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
-        float buy = 3f;
-        float forTotal = 5f;
-        BuyFor special = BuyFor.of(buy, forTotal, 0);
-        float quantity = 3f;
-        float price = 2.99f;
-        assertEquals(5f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(3f, 5f, 0);
+        assertEquals(5f, special.priceOf(3f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsOneDiscountAndThenBuysMoreVerifyDiscountIsAppliedJustForDiscountedQuantity() {
-        float buy = 3f;
-        float forTotal = 5f;
-        BuyFor special = BuyFor.of(buy, forTotal, 0);
-        float quantity = 4f;
-        float price = 2.99f;
-        assertEquals(7.99f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(3f, 5f, 0);
+        assertEquals(7.99f, special.priceOf(4f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingPriceThatGetsMultipleDiscountVerifyMultipleDiscountAreApplied() {
-        float buy = 3f;
-        float forTotal = 5f;
-        BuyFor special = BuyFor.of(buy, forTotal, 0);
-        float quantity = 6f;
-        float price = 2.99f;
-        assertEquals(10f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(3f, 5f, 0);
+        assertEquals(10f, special.priceOf(6f, 2.99f), 0);
     }
 
     @Test
     public void whenCalculatingFractionalValuesVerifyDiscountIsApplied() {
-        float buy = 2.333f;
-        float forTotal = 2.03f;
-        BuyFor special = BuyFor.of(buy, forTotal, 0);
-        float quantity = 4.977f;
-        float price = 1.03f;
-        assertEquals(4.38f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(2.333f, 2.03f, 0);
+        assertEquals(4.38f, special.priceOf(4.977f, 1.03f), 0);
     }
 
     @Test
     public void whenCalculatingPriceWithLimitVerifyAfterLimitStickerPriceIsCharged() {
-        float buy = 2f;
-        float forTotal = 5f;
-        BuyFor special = BuyFor.of(buy, forTotal, 2);
-        float quantity = 12f;
-        float price = 2.99f;
-        assertEquals(33.92f, special.priceOf(quantity, price), 0);
+        BuyFor special = BuyFor.of(2f, 5f, 2);
+        assertEquals(33.92f, special.priceOf(12f, 2.99f), 0);
     }
 
 }
