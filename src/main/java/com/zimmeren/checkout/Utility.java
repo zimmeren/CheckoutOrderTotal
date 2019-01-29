@@ -1,7 +1,5 @@
 package com.zimmeren.checkout;
 
-import java.math.BigDecimal;
-
 public class Utility {
 
     public static float roundUpToCent(float unrounded) {
