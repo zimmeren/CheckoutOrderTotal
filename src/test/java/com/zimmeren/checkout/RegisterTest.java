@@ -251,7 +251,7 @@ public class RegisterTest {
     @Test
     public void whenRemovingAScannedEachesItemTheBuyForSpecialIsInvalidated() {
         Register register = new Register();
-        String item = "Chaco Taco";
+        String item = "chaco taco";
         float price = .99f;
         register.catalog.addItem(item, price);
         register.catalog.setItemSpecial(item, 3f, 2.49f);
@@ -266,7 +266,7 @@ public class RegisterTest {
     @Test
     public void whenRemovingAScannedWeightedItemTheBuyGetSpecialIsInvalidated() {
         Register register = new Register();
-        String item = "Roasted Chicken";
+        String item = "roasted chicken";
         float price = 3.99f;
         register.catalog.addItem(item, price);
         register.catalog.setItemSpecial(item, 1.5f, 0.5f, 1f);
@@ -274,6 +274,39 @@ public class RegisterTest {
         assertEquals(5.99f, register.getTotal(), 0);
         register.removeWeighted(item, .75f);
         assertEquals(4.99f, register.getTotal(), 0);
+    }
+
+    @Test
+    public void whenShoppingForABunchOfDifferentItemsWithMarkdownsAndSpecialsTheCorrectTotalIsCalculated() {
+        Register register = new Register();
+        register.catalog.addItem("roasted chicken", 3.99f);
+        register.catalog.addItem("chaco taco", 0.99f);
+        register.catalog.addItem("ground beef", 1.49f);
+        register.catalog.addItem("doritos", 1.67f);
+        register.catalog.addItem("chicken fingers", 2.98f);
+        register.catalog.addItem("cookies", 3.50f);
+        register.catalog.setItemMarkdown("doritos", 0.65f);
+        register.catalog.setItemSpecial("ground beef", 2f, 2.00f);
+        register.catalog.setItemSpecial("chaco taco", 3f, 2.49f);
+        register.catalog.setItemSpecialWithLimit("cookies", 2f, 1f, 1f,  1);
+        register.purchaseEaches("chaco taco");
+        register.purchaseEaches("chaco taco");
+        register.purchaseEaches("chaco taco");
+        register.purchaseEaches("chaco taco");
+        register.purchaseEaches("doritos");
+        register.purchaseEaches("doritos");
+        register.purchaseWeighted("roasted chicken", 1.81f);
+        register.removeWeighted("roasted chicken", 0.13f);
+        register.purchaseWeighted("ground beef", 3.02f);
+        register.purchaseEaches("cookies");
+        register.purchaseEaches("cookies");
+        register.purchaseEaches("cookies");
+        register.purchaseEaches("cookies");
+        register.purchaseEaches("cookies");
+        register.purchaseEaches("cookies");
+        register.removeEaches("doritos");
+        register.purchaseWeighted("chicken fingers", 1f);
+        assertEquals(35.21f, register.getTotal(), 0);
     }
 
 }
