@@ -248,4 +248,19 @@ public class RegisterTest {
         assertEquals(8.24f, register.getTotal(), 0);
     }
 
+    @Test
+    public void whenRemovingAScannedEachesItemTheBuyForSpecialIsInvalidated() {
+        Register register = new Register();
+        String item = "Chaco Taco";
+        float price = .99f;
+        register.catalog.addItem(item, price);
+        register.catalog.setItemSpecial(item, 3f, 2.49f);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        register.purchaseEaches(item);
+        assertEquals(2.49f, register.getTotal(), 0);
+        register.removeEaches(item);
+        assertEquals(1.98f, register.getTotal(), 0);
+    }
+
 }
