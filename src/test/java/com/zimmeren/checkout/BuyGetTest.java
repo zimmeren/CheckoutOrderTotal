@@ -20,7 +20,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetThatDoesNotMeetBuyRequirementStickPriceIsCharged() {
+    public void whenCalculatingPriceThatDoesNotMeetBuyRequirementStickPriceIsCharged() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
@@ -31,7 +31,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
+    public void whenCalculatingPriceThatGetsOneDiscountItemVerifyTheWholeDiscountIsApplied() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
@@ -42,7 +42,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetThatGetsTwoDiscountItemsVerifyTheWholeDiscountIsApplied() {
+    public void whenCalculatingPriceThatGetsTwoDiscountItemsVerifyTheWholeDiscountIsAppliedToBoth() {
         float buy = 3f;
         float get = 2f;
         float off = 1f;
@@ -53,7 +53,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
+    public void whenCalculatingPriceThatGetsOneDiscountItemVerifyThePartialDiscountIsApplied() {
         float buy = 3f;
         float get = 1f;
         float off = 0.88f;
@@ -64,7 +64,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetThatQualifiesTwiceVerifyDiscountIsApplied() {
+    public void whenCalculatingPriceThatQualifiesTwiceVerifyDiscountIsAppliedTwice() {
         float buy = 3f;
         float get = 1f;
         float off = 1f;
@@ -75,7 +75,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfPartialBuyAndGetAmountsVerifyDiscountIsApplied() {
+    public void whenCalculatingPriceOfFractionalQuantifiersVerifyTheExpectedDiscountIsApplied() {
         float buy = 2.3333f;
         float get = .6666f;
         float off = .7333f;
@@ -86,7 +86,7 @@ public class BuyGetTest {
     }
 
     @Test
-    public void whenCalculatingPriceOfBuyGetWithLimitVerifyAfterLimitStickerPriceIsCharged() {
+    public void whenCalculatingPriceWithLimitVerifyAfterLimitStickerPriceIsCharged() {
         float buy = 2f;
         float get = 1f;
         float off = 1f;
